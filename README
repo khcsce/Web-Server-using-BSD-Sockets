@@ -1,0 +1,52 @@
+NAME: Khoa Quach
+EMAIL: khoaquachschool@gmail.com
+ID: 105123806
+
+CS118 Project 1: Web Server Implementation using BSD Sockets
+
+-The high level design of your server (one paragraph)
+
+I create a client and server connection using two socket file descriptors.
+The browser serves as the client. The user has to specify while <file> they want 
+by typing in the url localhost:<port_no>/<file>. The <port_no> is specified 
+when executable is ran by doing ./webserver <port_no>. The server first
+reads the HTTP request, prints out the request to the terminal, parses the request
+to determine file_name and file_type. Afterward, the size of the file is determined
+and the contents of the file are read into a buffer. Next, the HTML response is done
+by printing out the HTTP version and status, the content length of the file, the content type 
+by comparing the determined file type and strings like "html", "jpg", etc.Finally,
+the contents of the file are printed to the browser for the user to actually see.
+
+Example compililation and runnning:
+make
+./webserver 5334
+
+// In the browser, type in the url:
+
+localhost:5334/file.txt
+
+-The problems you ran into and how you solved the problems (up to three paragraphs)
+
+All my files were being treated as binary files even though some had extentsions.
+I examined my code where I did the string parsing for the type of contents. Finally, 
+I found out that I didn't if have an else condition for where the extensions of files
+didn't match html,htm,jpeg,jpg,and gif.
+Another problem I had was that my images and binary files worked fine, but my html
+and txt files didn't show up correctly. I forgot I had to actually read the contents of the file
+and not just the HTTP request. Thus, I created a file buffer then used "write" to print out
+the contents of the file to the file descriptior. 
+I didn't know how to parse the HTTP request to get the filename and file type. Thus, in order
+to help myself, I printed out the HTTP request after reading it. After examining the format of the 
+request, I determined iterating starting from an index 5 will solve the problem.
+
+
+-List of any additional libraries used Acknowledgement of any online tutorials or code
+example (except class website) you have been using.
+
+https://stackoverflow.com/questions/2659952/maximum-length-of-http-get-request#:~:text=Most%20web%20servers%20have%20a,specification%20even%20warns%20about%20this.
+https://www.ibm.com/support/knowledgecenter/SSEQVQ_8.1.11/client/c_cmd_filespecsyntax.html#:~:text=On%20Linux%3A%20The%20maximum%20length,path%20name%20is%204096%20bytes.
+https://fdiv.net/2009/01/14/memset-vs-bzero-ultimate-showdown
+https://stackoverflow.com/questions/30825491/does-0-appear-naturally-in-text-files
+https://stackoverflow.com/questions/40821419/when-why-is-0-necessary-to-mark-end-of-an-char-array
+https://stackoverflow.com/questions/10138192/malloc-the-size-of-file-http_request-base-on-an-existing-file
+https://stackoverflow.com/questions/174531/how-to-read-the-content-of-a-file-to-a-string-in-c
