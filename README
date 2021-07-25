@@ -2,7 +2,7 @@ NAME: Khoa Quach
 EMAIL: khoaquachschool@gmail.com
 ID: 105123806
 
-CS118 Project 1: Web Server Implementation using BSD Sockets
+Web Server Implementation using BSD Sockets
 
 -The high level design of your server (one paragraph)
 
@@ -25,7 +25,7 @@ make
 
 localhost:5334/file.txt
 
--The problems you ran into and how you solved the problems (up to three paragraphs)
+-The problems I ran into and how I solved the problems 
 
 All my files were being treated as binary files even though some had extentsions.
 I examined my code where I did the string parsing for the type of contents. Finally, 
@@ -40,8 +40,7 @@ to help myself, I printed out the HTTP request after reading it. After examining
 request, I determined iterating starting from an index 5 will solve the problem.
 
 
--List of any additional libraries used Acknowledgement of any online tutorials or code
-example (except class website) you have been using.
+Sources
 
 https://stackoverflow.com/questions/2659952/maximum-length-of-http-get-request#:~:text=Most%20web%20servers%20have%20a,specification%20even%20warns%20about%20this.
 https://www.ibm.com/support/knowledgecenter/SSEQVQ_8.1.11/client/c_cmd_filespecsyntax.html#:~:text=On%20Linux%3A%20The%20maximum%20length,path%20name%20is%204096%20bytes.
